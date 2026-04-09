@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prachi Patil | Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+}
+
+/* ================= NAVBAR ================= */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 8%;
+    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.4);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#00f5a0;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#00f5a0;
+}
+
+/* HAMBURGER */
+.menu-toggle{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    flex-direction:column;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:48px;
+}
+
+.hero span{
+    color:#00f5a0;
+}
+
+.hero h2{
+    margin-top:15px;
+    font-weight:300;
+    color:#ddd;
+}
+
+/* BUTTON */
+.btn{
+    margin-top:25px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background: linear-gradient(45deg,#00f5a0,#00d9f5);
+    color:black;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* ANIMATION */
+.animate{
+    opacity:0;
+    transform:translateY(30px);
+    animation:fadeUp 1s forwards;
+}
+
+.delay{
+    animation-delay:0.5s;
+}
+
+.delay2{
+    animation-delay:1s;
+}
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+    nav ul{
+        position:absolute;
+        top:70px;
+        right:-100%;
+        flex-direction:column;
+        background:#111;
+        width:200px;
+        padding:20px;
+        transition:0.3s;
+    }
+
+    nav ul.active{
+        right:0;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <nav>
+        <div class="logo">Prachi Patil</div>
+        <div class="menu-toggle">&#9776;</div>
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Skills</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HOME -->
+<section class="hero">
+    <h1 class="animate">Hello, I'm <span>Prachi Patil</span></h1>
+    <h2 class="animate delay"></h2>
+    <button class="btn animate delay2">Hire Me</button>
+</section>
+
+<script>
+// MOBILE MENU
+const toggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector("nav ul");
+
+toggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+});
+
+// TYPING EFFECT
+const text = "Aspiring Full Stack Web Developer";
+const typingElement = document.querySelector(".hero h2");
+
+let index = 0;
+
+function typeEffect() {
+    if (index < text.length) {
+        typingElement.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 50);
+    }
+}
+
+typeEffect();
+</script>
+
+</body>
+</html>
